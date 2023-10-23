@@ -3,18 +3,30 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 public class Main {
 
+    ArrayList<Block> blocks = new ArrayList<Block>();
+
     public static void main(String[] args) {
+        Main main = new Main();
 
         // creazione primo blocco
         Block block1 = new Block(null);
         block1.setData("Blocco1");
 
-        // creazione del secondo blocco      
+        // creazione del secondo blocco
         Block block2 = new Block(hashBlock(block1));
         block2.setData("Blocco2");
+
+
+        main.addNewBlock(block1);
+        main.addNewBlock(block2);
+    }
+
+    public void addNewBlock(Block b) {
+        blocks.add(b);
     }
 
     /*
